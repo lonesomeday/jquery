@@ -1,7 +1,7 @@
 module("css", { teardown: moduleTeardown });
 
 test("css(String|Hash)", function() {
-	expect( 42 );
+	expect( 44 );
 
 	equals( jQuery("#qunit-fixture").css("display"), "block", "Check for css property \"display\"");
 
@@ -10,6 +10,11 @@ test("css(String|Hash)", function() {
 	ok( !jQuery("#nothiddendiv").is(":visible"), "Modified CSS display: Assert element is hidden");
 	jQuery("#nothiddendiv").css({display: "block"});
 	ok( jQuery("#nothiddendiv").is(":visible"), "Modified CSS display: Assert element is visible");
+
+    jQuery("#nothiddendiv").css({opacity: 0});
+    ok ( jQuery("#nothiddendiv").is(":hidden"), "Modifying CSS opacity: Assert element is hidden");
+    jQuery("#nothiddendiv").css({opacity: 100});
+    ok ( jQuery("#nothiddendiv").is(":visible"), "Modifying CSS opacity: Assert element is visible");
 
 	var div = jQuery( "<div>" );
 
